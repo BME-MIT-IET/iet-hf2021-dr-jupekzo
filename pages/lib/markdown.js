@@ -5,19 +5,19 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-var { Seq } = require('../../');
-var marked = require('marked');
-var prism = require('./prism');
-var collectMemberGroups = require('./collectMemberGroups');
+var { Seq } = require("../../");
+var marked = require("marked");
+var prism = require("./prism");
+var collectMemberGroups = require("./collectMemberGroups");
 // Note: intentionally using raw defs, not getTypeDefs to avoid circular ref.
-var defs = require('../generated/immutable.d.json');
+var defs = require("../generated/immutable.d.json");
 
 function collectAllMembersForAllTypes(defs) {
   var allMembers = new WeakMap();
   _collectAllMembersForAllTypes(defs);
   return allMembers;
   function _collectAllMembersForAllTypes(defs) {
-    Seq(defs).forEach(def => {
+    Seq(defs).forEach((def) => {
       if (def.interface) {
         var groups = collectMemberGroups(def.interface, {
           showInherited: true,
@@ -25,7 +25,7 @@ function collectAllMembersForAllTypes(defs) {
         allMembers.set(
           def.interface,
           Seq.Keyed(
-            groups[''].map(member => [member.memberName, member.memberDef])
+            groups[""].map((member) => [member.memberName, member.memberDef])
           ).toObject()
         );
       }
@@ -40,38 +40,39 @@ function collectAllMembersForAllTypes(defs) {
 var allMembers = collectAllMembersForAllTypes(defs);
 
 // functions come before keywords
-prism.languages.insertBefore('javascript', 'keyword', {
+prism.languages.insertBefore("javascript", "keyword", {
   var: /\b(this)\b/g,
-  'block-keyword': /\b(if|else|while|for|function)\b/g,
+  "block-keyword": /\b(if|else|while|for|function)\b/g,
   primitive: /\b(true|false|null|undefined)\b/g,
   function: prism.languages.function,
 });
 
-prism.languages.insertBefore('javascript', {
+prism.languages.insertBefore("javascript", {
   qualifier: /\b[A-Z][a-z0-9_]+/g,
 });
 
 marked.setOptions({
   xhtml: true,
-  highlight: code => prism.highlight(code, prism.languages.javascript),
+  highlight: (code) => prism.highlight(code, prism.languages.javascript),
 });
 
 var renderer = new marked.Renderer();
 
 const runkitRegExp = /^<!--\s*runkit:activate((.|\n)*)-->(.|\n)*$/;
-const runkitContext = { options: '{}', activated: false };
+const runkitContext = { options: "{}", activated: false };
 
 renderer.html = function(text) {
   const result = runkitRegExp.exec(text);
 
-  if (!result) return text;
-
-  runkitContext.activated = true;
-  try {
-    runkitContext.options = result[1] ? JSON.parse(result[1]) : {};
-  } catch (e) {
-    runkitContext.options = {};
+  if (result) {
+    runkitContext.activated = true;
+    try {
+      runkitContext.options = result[1] ? JSON.parse(result[1]) : {};
+    } catch (e) {
+      runkitContext.options = {};
+    }
   }
+
   return text;
 };
 
@@ -88,16 +89,16 @@ renderer.code = function(code, lang, escaped) {
     ? '<a class="try-it" data-options="' +
       escape(JSON.stringify(runkitContext.options)) +
       '" onClick="runIt(this)">run it</a>'
-    : '';
+    : "";
 
   runkitContext.activated = false;
-  runkitContext.options = '{}';
+  runkitContext.options = "{}";
 
   return (
     '<code class="codeBlock">' +
     (escaped ? code : escapeCode(code, true)) +
     runItButton +
-    '</code>'
+    "</code>"
   );
 };
 
@@ -109,10 +110,10 @@ var MDN_TYPES = {
   JSON: true,
 };
 var MDN_BASE_URL =
-  'https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/';
+  "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/";
 
 renderer.codespan = function(text) {
-  return '<code>' + decorateCodeSpan(text, this.options) + '</code>';
+  return "<code>" + decorateCodeSpan(text, this.options) + "</code>";
 };
 
 function decorateCodeSpan(text, options) {
@@ -122,10 +123,10 @@ function decorateCodeSpan(text, options) {
     context.signatures &&
     PARAM_RX.test(text) &&
     context.signatures.some(
-      sig => sig.params && sig.params.some(param => param.name === text)
+      (sig) => sig.params && sig.params.some((param) => param.name === text)
     )
   ) {
-    return '<span class="t param">' + text + '</span>';
+    return '<span class="t param">' + text + "</span>";
   }
 
   var method = METHOD_RX.exec(text);
@@ -133,7 +134,7 @@ function decorateCodeSpan(text, options) {
     method = method.slice(1).filter(Boolean);
     if (MDN_TYPES[method[0]]) {
       return (
-        '<a href="' + MDN_BASE_URL + method.join('/') + '">' + text + '</a>'
+        '<a href="' + MDN_BASE_URL + method.join("/") + '">' + text + "</a>"
       );
     }
     if (
@@ -143,15 +144,15 @@ function decorateCodeSpan(text, options) {
     ) {
       var path = findPath(context, method);
       if (path) {
-        var relPath = context.relPath || '';
+        var relPath = context.relPath || "";
         return (
           '<a target="_self" href="' +
           relPath +
-          '#/' +
-          path.slice(1).join('/') +
+          "#/" +
+          path.slice(1).join("/") +
           '">' +
           text +
-          '</a>'
+          "</a>"
         );
       }
     }
@@ -197,20 +198,20 @@ function findPath(context, search) {
 
 function escapeCode(code) {
   return code
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;')
-    .replace(/'/g, '&#39;');
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
 }
 
 function unescapeCode(code) {
   return code
-    .replace(/&lt;/g, '<')
-    .replace(/&gt;/g, '>')
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
     .replace(/&quot;/g, '"')
     .replace(/&#39;/g, "'")
-    .replace(/&amp;/g, '&');
+    .replace(/&amp;/g, "&");
 }
 
 function markdown(content, context) {
