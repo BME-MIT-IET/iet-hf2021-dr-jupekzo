@@ -30,7 +30,7 @@ function collectMemberGroups(interfaceDef, options) {
 
   if (!options.showInherited) {
     groups = Seq(groups)
-      .map(members => members.filter(member => !member.inherited))
+      .map(membersOfGroup => membersOfGroup.filter(member => !member.inherited))
       .toObject();
   }
 
