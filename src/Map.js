@@ -478,9 +478,7 @@ class HashCollisionNode {
 
     if (exists) {
       if (removed) {
-        idx === len - 1
-          ? newEntries.pop()
-          : (newEntries[idx] = newEntries.pop());
+        this.entries.removeElementFromNewEntries(idx, len, newEntries);
       } else {
         newEntries[idx] = [key, value];
       }
@@ -494,6 +492,14 @@ class HashCollisionNode {
     }
 
     return new HashCollisionNode(ownerID, this.keyHash, newEntries);
+  }
+
+  removeElementFromNewEntries(idx, len, newEntries) {
+    if (idx === len - 1) {
+      newEntries.pop();
+    } else {
+      newEntries[idx] = newEntries.pop();
+    }
   }
 }
 
