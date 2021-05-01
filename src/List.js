@@ -367,33 +367,35 @@ function iterateList(list, reverse) {
   }
 
   function iterateNode(node, level, offset) {
-    let values;
     const array = node && node.array;
     let from = offset > left ? 0 : (left - offset) >> level;
     let to = ((right - offset) >> level) + 1;
     if (to > SIZE) {
       to = SIZE;
     }
-    return () => {
-      while (true) {
-        if (values) {
-          const value = values();
-          if (value !== DONE) {
-            return value;
-          }
-          values = null;
+    return iteratingOnArray(array, to, from);
+  }
+
+  function iteratingOnArray(array, to, from){
+    let values;
+    while (true) {
+      if (values) {
+        const value = values();
+        if (value !== DONE) {
+          return value;
         }
-        if (from === to) {
-          return DONE;
-        }
-        const idx = reverse ? --to : from++;
-        values = iterateNodeOrLeaf(
-          array && array[idx],
-          level - SHIFT,
-          offset + (idx << level)
-        );
+        values = null;
       }
-    };
+      if (from === to) {
+        return DONE;
+      }
+      const idx = reverse ? --to : from++;
+      values = iterateNodeOrLeaf(
+        array && array[idx],
+        level - SHIFT,
+        offset + (idx << level)
+      );
+    }
   }
 }
 
