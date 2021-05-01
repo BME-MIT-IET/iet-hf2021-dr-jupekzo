@@ -28,11 +28,11 @@ import isArrayLike from './utils/isArrayLike';
 
 export class Seq extends Collection {
   constructor(value) {
-    return value === null || value === undefined
-      ? emptySequence()
-      : isImmutable(value)
-        ? value.toSeq()
-        : seqFromValue(value);
+    if(value === null || value === undefined)
+      return emptySequence();
+    else{
+      return isImmutable(value) ? value.toSeq() : seqFromValue(value);
+    } 
   }
 
   toSeq() {
@@ -90,15 +90,17 @@ export class Seq extends Collection {
 
 export class KeyedSeq extends Seq {
   constructor(value) {
-    return value === null || value === undefined
-      ? emptySequence().toKeyedSeq()
-      : isCollection(value)
-        ? isKeyed(value)
-          ? value.toSeq()
-          : value.fromEntrySeq()
-        : isRecord(value)
-          ? value.toSeq()
-          : keyedSeqFromValue(value);
+    if(value === null || value === undefined)
+      return emptySequence().toKeyedSeq();
+    else if(isCollection(value))
+      if(isKeyed(value))
+        return value.toSeq();
+      else
+        return value.fromEntrySeq();
+    else if(isRecord(value))
+      return value.toSeq();
+    else
+     return keyedSeqFromValue(value);
   }
 
   toKeyedSeq() {
@@ -108,15 +110,17 @@ export class KeyedSeq extends Seq {
 
 export class IndexedSeq extends Seq {
   constructor(value) {
-    return value === null || value === undefined
-      ? emptySequence()
-      : isCollection(value)
-        ? isKeyed(value)
-          ? value.entrySeq()
-          : value.toIndexedSeq()
-        : isRecord(value)
-          ? value.toSeq().entrySeq()
-          : indexedSeqFromValue(value);
+    if(value === null || value === undefined)
+      return emptySequence();
+    else if(isCollection(value))
+        if(isKeyed(value))
+          return value.entrySeq();
+        else
+          return value.toIndexedSeq();
+    else if(isRecord(value))
+      return value.toSeq().entrySeq();
+    else
+      return indexedSeqFromValue(value);
   }
 
   static of(/*...values*/) {
