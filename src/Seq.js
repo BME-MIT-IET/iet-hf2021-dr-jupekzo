@@ -203,8 +203,7 @@ export class ArraySeq extends IndexedSeq {
 
 class ObjectSeq extends KeyedSeq {
   constructor(object) {
-    let list = [];
-    super(list);
+    super();
     const keys = Object.keys(object);
     this._object = object;
     this._keys = keys;
