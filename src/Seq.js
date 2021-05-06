@@ -202,7 +202,7 @@ export class ArraySeq extends IndexedSeq {
 
 class ObjectSeq extends KeyedSeq {
   constructor(object) {
-    super(object);
+    super(null);
     const keys = Object.keys(object);
     this._object = object;
     this._keys = keys;
@@ -252,8 +252,7 @@ ObjectSeq.prototype[IS_ORDERED_SYMBOL] = true;
 
 class CollectionSeq extends IndexedSeq {
   constructor(collection) {
-    let list = {};
-    super(list);
+    super(collection);
     this._collection = collection;
     this.size = collection.length || collection.size;
   }
