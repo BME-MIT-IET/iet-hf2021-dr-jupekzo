@@ -161,7 +161,7 @@ export class ToSetSequence extends SetSeq {
 
 export class FromEntriesSequence extends KeyedSeq {
   constructor(entries) {
-    let list = [];
+    let list = {};
     super(list);
     this._iter = entries;
     this.size = entries.size;
