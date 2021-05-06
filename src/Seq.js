@@ -164,7 +164,7 @@ Seq.prototype[IS_SEQ_SYMBOL] = true;
 
 export class ArraySeq extends IndexedSeq {
   constructor(array) {
-    super(array);
+    super([]);
     this._array = array;
     this.size = array.length;
   }
