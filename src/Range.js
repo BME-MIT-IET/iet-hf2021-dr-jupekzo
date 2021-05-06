@@ -19,6 +19,8 @@ import deepEqual from './utils/deepEqual';
  */
 export class Range extends IndexedSeq {
   constructor(start, end, step) {
+    let list = [];
+    super(list);
     if (!(this instanceof Range)) {
       return new Range(start, end, step);
     }
