@@ -205,7 +205,7 @@ import { Stack } from '../../';
 { // #withMutations
 
   // $ExpectType Stack<number>
-  Stack<number>().withMutations(mutable => mutable);
+  Stack<number>().withMutations((mutable: any) => mutable);
 
   // $ExpectError
   Stack<number>().withMutations((mutable: Stack<string>) => mutable);

@@ -228,7 +228,7 @@ import { Set, Map } from '../../';
 { // #withMutations
 
   // $ExpectType Set<number>
-  Set<number>().withMutations(mutable => mutable);
+  Set<number>().withMutations((mutable: any) => mutable);
 
   // $ExpectError
   Set<number>().withMutations((mutable: Set<string>) => mutable);

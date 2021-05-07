@@ -133,7 +133,7 @@ import { Map, List } from '../../';
 { // #update
 
   // $ExpectType number
-  Map().update(v => 1);
+  Map().update((v: any) => 1);
 
   // $ExpectError
   Map<number, number>().update((v: Map<string>) => v);
@@ -157,7 +157,7 @@ import { Map, List } from '../../';
 { // #updateIn
 
   // $ExpectType Map<number, number>
-  Map<number, number>().updateIn([], v => v);
+  Map<number, number>().updateIn([], (v: any) => v);
 
   // $ExpectError
   Map<number, number>().updateIn([], 10);
@@ -355,7 +355,7 @@ import { Map, List } from '../../';
 { // #withMutations
 
   // $ExpectType Map<number, number>
-  Map<number, number>().withMutations(mutable => mutable);
+  Map<number, number>().withMutations((mutable: any) => mutable);
 
   // $ExpectError
   Map<number, number>().withMutations((mutable: Map<string>) => mutable);

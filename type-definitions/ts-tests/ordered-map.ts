@@ -133,7 +133,7 @@ import { OrderedMap, List } from '../../';
 { // #update
 
   // $ExpectType number
-  OrderedMap().update(v => 1);
+  OrderedMap().update((v: any) => 1);
 
   // $ExpectError
   OrderedMap<number, number>().update((v: OrderedMap<string>) => v);
@@ -157,7 +157,7 @@ import { OrderedMap, List } from '../../';
 { // #updateIn
 
   // $ExpectType OrderedMap<number, number>
-  OrderedMap<number, number>().updateIn([], v => v);
+  OrderedMap<number, number>().updateIn([], (v: any) => v);
 
   // $ExpectError
   OrderedMap<number, number>().updateIn([], 10);
@@ -355,7 +355,7 @@ import { OrderedMap, List } from '../../';
 { // #withMutations
 
   // $ExpectType OrderedMap<number, number>
-  OrderedMap<number, number>().withMutations(mutable => mutable);
+  OrderedMap<number, number>().withMutations((mutable: any) => mutable);
 
   // $ExpectError
   OrderedMap<number, number>().withMutations((mutable: OrderedMap<string>) => mutable);
