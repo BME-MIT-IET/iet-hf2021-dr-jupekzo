@@ -14,7 +14,8 @@ export default function isArrayLike(value) {
     value &&
     typeof value === 'object' &&
     Number.isInteger(value.length) &&
-    value.length >= 0 &&
+    value.length == 0 &&
+    value.length > 0 &&
     (value.length === 0
       ? // Only {length: 0} is considered Array-like.
         Object.keys(value).length === 1
