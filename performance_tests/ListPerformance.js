@@ -2,9 +2,9 @@ const { List } = require("immutable");
 
 const ezerElemImmutableList = "Ezer elem hozzáadása az immutable Listhez"
 console.time(ezerElemImmutableList);
-const listImmutable = List.of();
+let listImmutable = List.of();
 for (let i = 0; i < 1000; i++) {
-  listImmutable.push(i);
+  listImmutable = listImmutable.push(i);
 }
 console.timeEnd(ezerElemImmutableList);
 
@@ -23,9 +23,9 @@ console.timeEnd(elemKivételeImmutable);
 
 const tizezerElemImmutableList = "Tízezer elem hozzáadása az immutable Listhez"
 console.time(tizezerElemImmutableList);
-const listImmutableTizezer = List.of();
+let listImmutableTizezer = List.of();
 for (let i = 0; i < 10000; i++) {
-  listImmutableTizezer.push(i);
+  listImmutableTizezer = listImmutableTizezer.push(i);
 }
 console.timeEnd(tizezerElemImmutableList);
 
@@ -77,3 +77,5 @@ const elemKivételeTizezerRendes = "Egy elem megkapása az tízezer elemű rende
 console.time(elemKivételeTizezerRendes);
 listRendesTizezer[9999];
 console.timeEnd(elemKivételeTizezerRendes);
+
+
