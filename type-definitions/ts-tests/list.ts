@@ -309,7 +309,7 @@ import {
   List<number>().flatMap((value: number, key: number, iter: List<number>) => ['a']);
 
   // $ExpectType List<string>
-  List<List<string>>().flatMap((list: any) => list);
+  List<List<string>>().flatMap((list: List<string>) => list);
 
   // $ExpectType List<number>
   List<number>().flatMap<number>((value: number, key: number, iter: List<number>) => [1]);
