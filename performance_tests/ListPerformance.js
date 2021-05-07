@@ -1,4 +1,4 @@
-const { List, Map } = require("immutable");
+const { List } = require("immutable");
 
 const ezerElemImmutableList = "Ezer elem hozzáadása az immutable Listhez"
 console.time(ezerElemImmutableList);
