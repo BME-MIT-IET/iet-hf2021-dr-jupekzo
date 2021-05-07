@@ -228,7 +228,7 @@ import { OrderedSet, Map } from '../../';
 { // #withMutations
 
   // $ExpectType OrderedSet<number>
-  OrderedSet<number>().withMutations(mutable => mutable);
+  OrderedSet<number>().withMutations((mutable: any) => mutable);
 
   // $ExpectError
   OrderedSet<number>().withMutations((mutable: OrderedSet<string>) => mutable);
