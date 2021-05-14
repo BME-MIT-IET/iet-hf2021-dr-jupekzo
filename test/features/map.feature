@@ -7,7 +7,8 @@ Feature: Adding to map
         Given a map with 1 element
         When I add another one to it
         Then a new map should be created containing both
-    
+
+
 
    
         
