@@ -27,7 +27,7 @@ Feature: Map functions
         And add another value to it
         Then Three immutable maps should be present: the original with six values, a second map with two and a third with three values
 
-    Scenario Outline: "Concatenating different types of iterables"
+    Scenario Outline: "Concatenating different types of iterables with maps"
         Given a map with four elements, a list with 2 and an array with 4
         When we concatenate the list and the array
         And merge the array to these two

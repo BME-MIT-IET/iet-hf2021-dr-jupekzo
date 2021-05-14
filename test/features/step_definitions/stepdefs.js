@@ -110,7 +110,7 @@ Given('a map with {int} element', function (int) {
           assert.equal(this.map3.size, this.paramCount2+1);
           });
 
-  //Scenario Outline: "Concatenating different types of iterables"    
+  //Scenario Outline: "Concatenating different types of iterables with maps"    
    Given('a map with four elements, a list with {int} and an array with {int}', function (int, int2) {
     this.map1 = Map({ a: 3, b: 4, c: 5, d: 6 });
     this.list = List([ 1, 2]);
