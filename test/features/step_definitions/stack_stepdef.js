@@ -49,7 +49,6 @@ When('Unshift elements and shift them', function () {
     this.stack2 = this.stack1.withMutations(function (stack) {
         stack.unshift(7, 9).shift();
       });
-    console.log(this.stack2.toString());
 });
 
 Then('A new stack should be created containing all the values, like when it was mutable', function () {

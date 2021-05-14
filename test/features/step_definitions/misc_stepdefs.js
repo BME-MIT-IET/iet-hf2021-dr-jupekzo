@@ -56,8 +56,6 @@ When('merge the updated list with the set', function () {
 
   Then('I should get a set with {int},{int},{int},{int},{int}', function (int, int2, int3, int4, int5)  {
     this.set3 = List([int, int2, int3, int4, int5]).toSet();
-    console.log(this.set2.toString());
-    console.log(this.set3.toString());
     assert.equal(this.set2.equals(this.set3), true);
   
 
