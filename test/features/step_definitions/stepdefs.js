@@ -3,7 +3,6 @@ const { Given, When, Then } = require("cucumber");
 const { Map, List } = require('immutable');
 
 
-//const map1 = Map({ a: 1, b: 2, c: 3 });
 
 //Scenario Outline: Adding new elements to Maps
 Given('a map with {int} element', function (int) {
