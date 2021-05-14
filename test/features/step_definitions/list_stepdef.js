@@ -153,7 +153,6 @@ When('Apply a series of mutations', function () {
     this.list2 = this.list1.withMutations(function (list) {
         list.push(3).push(7).push(9).remove(0);
       });
-     console.log(this.list2.toString());
 });
 
 Then('A new list should be created containing the mutations', function () {
