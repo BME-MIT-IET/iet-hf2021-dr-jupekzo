@@ -104,7 +104,7 @@ Then('A new list should be created containing no values', function () {
 //Scenario Outline: Pop elements from the List
 
 Given('The sixth test list with {int} element', function (int) {
-    this.list1 = List([1, 2]);
+    this.list1 = List([3, 4]);
 });
 
 
@@ -115,15 +115,15 @@ When('Pop element from the list', function () {
 Then('A new list should be created containing the poped value', function () {
     assert.equal(this.list1.size, 2);
     assert.equal(this.list2.size, 1);
-    assert.equal(this.list1.get(0), 1);
-    assert.equal(this.list1.get(1), 2);
-    assert.equal(this.list2.get(0), 1);
+    assert.equal(this.list1.get(0), 3);
+    assert.equal(this.list1.get(1), 4);
+    assert.equal(this.list2.get(0), 3);
 });
 
 //Scenario Outline: Unshift the elements and concat the two list
 
 Given('The seventh test list with {int} element', function (int) {
-    this.list1 = List([1, 2]);
+    this.list1 = List([9, 2]);
 });
 
 
