@@ -55,6 +55,6 @@ Then('A new stack should be created containing all the values, like when it was 
     assert.equal(this.stack2.size, 3);
     assert.equal(this.stack1.wasAltered(), false);
     assert.equal(this.stack2.wasAltered(), false);
-    assert.equal(this.stack2.peek(), 9);
+    assert.equal(this.stack2.peek(), 9); 
 });
 
