@@ -33,6 +33,9 @@ Then('I will have a list with {int} elements and the previous list stays with {i
     assert.equal(this.list2.get(5), 6);
 });
 
+
+//Scenario Outline: Updating List members and merging them with Sets
+
  Given('a set, containing {int},{int},{int}', function (int, int2, int3) {
     this.set1 = Set([int, int2, int3]);
   });

@@ -12,6 +12,8 @@ A tesztek lefuttatásának kimenetele:
 
 ![BDD-tesztek futtatása](images/bdd-test.png)
 
+A tesztek futtatása automatikusan megtörténik a CI keretrendszer által.
+
 
 ### Tanulságok, észrevételek
 
