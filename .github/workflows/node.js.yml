@@ -28,3 +28,7 @@ jobs:
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
+    - run: npm run cucumber-test
+    - run: node performance_tests/ListPerformance
+    - run: node performance_tests/MapPerformance
+    - run: node performance_tests/MapNormalPerformance
