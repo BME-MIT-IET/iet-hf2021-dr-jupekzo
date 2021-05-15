@@ -35,7 +35,7 @@ export function hash(o) {
         o = o.valueOf(o);
       }
       return hashJSObj(o);
-    case "undefined":
+    case 'undefined':
       return 0x42108423;
     default:
       if (typeof o.toString === "function") {
