@@ -9,7 +9,8 @@ on:
   pull_request:
     branches: [ main ]
 
-jobs:
+jobs:   
+  
   build:
 
     runs-on: ubuntu-latest
@@ -32,3 +33,9 @@ jobs:
     - run: node performance_tests/ListPerformance
     - run: node performance_tests/MapPerformance
     - run: node performance_tests/SetPerformance
+    - run: npm install codecov -g
+    - run: npm install jest -g
+    - run: ./node_modules/.bin/jest --coverage
+      continue-on-error: true
+    - run: codecov --token="9c7a2e27-2ba1-4a4b-8281-426b13615a73"
+    
