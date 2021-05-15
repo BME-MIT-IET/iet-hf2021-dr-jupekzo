@@ -1,0 +1,24 @@
+codecov:
+  token: "27a9706f-522c-4d86-a35b-99ff1a0909fe"
+  require_ci_to_pass: yes
+  bot: "codecov-io"
+  ci:
+    - "travis.org"
+
+coverage:
+  precision: 2
+  round: down
+  range: "70...100"
+
+parsers:
+  gcov:
+    branch_detection:
+      conditional: yes
+      loop: yes
+      method: no
+      macro: no
+
+comment:
+  layout: "reach,diff,flags,files,footer"
+  behavior: default
+  require_changes: no
