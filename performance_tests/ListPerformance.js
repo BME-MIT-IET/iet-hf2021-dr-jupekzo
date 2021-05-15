@@ -9,7 +9,7 @@ for (let i = 0; i < 1000; i++) {
 console.timeEnd(ezerElemImmutableList);
 
 
-const elemKivételeImmutable = "Egy elem megkapása az ezer elemű immutable listából"
+const elemKivételeImmutable = 'Egy elem megkapása az ezer elemű immutable listából'
 console.time(elemKivételeImmutable);
 listImmutable[999];
 console.timeEnd(elemKivételeImmutable);
