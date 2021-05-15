@@ -92,15 +92,20 @@ function hashString(string) {
 
 function hashJSObj(obj) {
   let hashed;
+  let a = false;
   if (usingWeakMap) {
     hashed = weakMap.get(obj);
     if (hashed !== undefined) {
       return hashed;
-      if (true === false) {
-        let i = 0
-        let b = 1
-        let c = a
-      }
+    }
+
+    if (a === true) {
+      let b = 0;
+      let c = 1;
+      let d = 2;
+      c = b;
+      b = d;
+      d = c;
     }
   }
 
