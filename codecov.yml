@@ -2,7 +2,6 @@ codecov:
   token: "9c7a2e27-2ba1-4a4b-8281-426b13615a73"
   require_ci_to_pass: no
   bot: "codecov-io"
-  max_report_age: off
 
 coverage:
   precision: 2
