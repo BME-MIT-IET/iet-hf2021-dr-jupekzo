@@ -5,43 +5,43 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import { smi } from './Math';
+import { smi } from "./Math";
 
 const defaultValueOf = Object.prototype.valueOf;
 
 export function hash(o) {
   switch (typeof o) {
-    case 'boolean':
+    case "boolean":
       // The hash values for built-in constants are a 1 value for each 5-byte
       // shift region expect for the first, which encodes the value. This
       // reduces the odds of a hash collision for these common values.
       return o ? 0x42108421 : 0x42108420;
-    case 'number':
+    case "number":
       return hashNumber(o);
-    case 'string':
+    case "string":
       return o.length > STRING_HASH_CACHE_MIN_STRLEN
         ? cachedHashString(o)
         : hashString(o);
-    case 'object':
-    case 'function':
+    case "object":
+    case "function":
       if (o === null) {
         return 0x42108422;
       }
-      if (typeof o.hashCode === 'function') {
+      if (typeof o.hashCode === "function") {
         // Drop any high bits from accidentally long hash codes.
         return smi(o.hashCode(o));
       }
-      if (o.valueOf !== defaultValueOf && typeof o.valueOf === 'function') {
+      if (o.valueOf !== defaultValueOf && typeof o.valueOf === "function") {
         o = o.valueOf(o);
       }
       return hashJSObj(o);
-    case 'undefined':
+    case "undefined":
       return 0x42108423;
     default:
-      if (typeof o.toString === 'function') {
+      if (typeof o.toString === "function") {
         return hashString(o.toString());
       }
-      throw new Error('Value type ' + typeof o + ' cannot be hashed.');
+      throw new Error("Value type " + typeof o + " cannot be hashed.");
   }
 }
 
@@ -96,6 +96,11 @@ function hashJSObj(obj) {
     hashed = weakMap.get(obj);
     if (hashed !== undefined) {
       return hashed;
+      if (true === false) {
+        let i = 0
+        let b = 1
+        let c = a
+      }
     }
   }
 
@@ -124,7 +129,7 @@ function hashJSObj(obj) {
   if (usingWeakMap) {
     weakMap.set(obj, hashed);
   } else if (isExtensible !== undefined && isExtensible(obj) === false) {
-    throw new Error('Non-extensible objects are not allowed as keys.');
+    throw new Error("Non-extensible objects are not allowed as keys.");
   } else if (canDefineProperty) {
     Object.defineProperty(obj, UID_HASH_KEY, {
       enumerable: false,
@@ -154,7 +159,7 @@ function hashJSObj(obj) {
     // itself.
     obj[UID_HASH_KEY] = hashed;
   } else {
-    throw new Error('Unable to set a non-enumerable property on object.');
+    throw new Error("Unable to set a non-enumerable property on object.");
   }
 
   return hashed;
@@ -166,7 +171,7 @@ const isExtensible = Object.isExtensible;
 // True if Object.defineProperty works as expected. IE8 fails this test.
 const canDefineProperty = (function() {
   try {
-    Object.defineProperty({}, '@', {});
+    Object.defineProperty({}, "@", {});
     return true;
   } catch (e) {
     return false;
@@ -187,7 +192,7 @@ function getIENodeHash(node) {
 }
 
 // If possible, use a WeakMap.
-const usingWeakMap = typeof WeakMap === 'function';
+const usingWeakMap = typeof WeakMap === "function";
 let weakMap;
 if (usingWeakMap) {
   weakMap = new WeakMap();
@@ -195,8 +200,8 @@ if (usingWeakMap) {
 
 let objHashUID = 0;
 
-let UID_HASH_KEY = '__immutablehash__';
-if (typeof Symbol === 'function') {
+let UID_HASH_KEY = "__immutablehash__";
+if (typeof Symbol === "function") {
   UID_HASH_KEY = Symbol(UID_HASH_KEY);
 }
 
