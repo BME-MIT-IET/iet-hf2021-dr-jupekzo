@@ -1,9 +1,7 @@
 codecov:
   token: "27a9706f-522c-4d86-a35b-99ff1a0909fe"
-  require_ci_to_pass: yes
+  require_ci_to_pass: no
   bot: "codecov-io"
-  ci:
-    - "travis.org"
 
 coverage:
   precision: 2
