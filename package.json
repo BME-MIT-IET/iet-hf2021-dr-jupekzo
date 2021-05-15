@@ -60,7 +60,7 @@
     "unmockedModulePathPatterns": [
       "./node_modules/react"
     ],
-    "collectCoverage":true
+    "collectCoverage": true
   },
   "devDependencies": {
     "benchmark": "2.1.4",
@@ -68,6 +68,7 @@
     "browserify": "16.2.2",
     "colors": "1.2.5",
     "cucumber": "^7.0.0-rc.0",
+    "codecov": "3.7.0",
     "del": "3.0.0",
     "dtslint": "0.1.2",
     "eslint": "4.19.1",
