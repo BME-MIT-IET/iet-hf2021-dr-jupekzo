@@ -10,7 +10,7 @@ A tesztek elkészítéséhez a Cucumber keretrendszert használtuk. Ehhez szeren
 
 A tesztek lefuttatásának kimenetele:
 
-![BDD-tesztek futtatása](images/bdd-test.png)
+![BDD-tesztek futtatása](images/bdd-test.PNG)
 
 A tesztek futtatása automatikusan megtörténik a CI keretrendszer által.
 
