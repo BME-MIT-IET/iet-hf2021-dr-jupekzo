@@ -7,4 +7,4 @@ scripts:
   -npm run test:travis
   -npm install codecov -g
 after_success:
-  -codecov --token=:27a9706f-522c-4d86-a35b-99ff1a0909fe
+  -codecov --token="9c7a2e27-2ba1-4a4b-8281-426b13615a73"
