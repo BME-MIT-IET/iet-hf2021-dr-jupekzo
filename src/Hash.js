@@ -106,6 +106,10 @@ function hashJSObj(obj) {
       c = b;
       b = d;
       d = c;
+
+      d = 1;
+      d = 2;
+      d = 4;
     }
   }
 
