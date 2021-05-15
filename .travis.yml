@@ -3,4 +3,8 @@ language: node_js
 node_js: 8
 
 cache: yarn
-script: npm run test:travis
+scripts:
+  -npm run test:travis
+  - npm install codecov -g
+after_success:
+  - codecov --token=:27a9706f-522c-4d86-a35b-99ff1a0909fe
