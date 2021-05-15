@@ -1,91 +1,84 @@
 const { Map: ImmutableMap } = require("immutable");
 
-
 class MapNormalClass {
+  constructor() {
+    this.mapObject = new Map();
+    this.mapTenObject = new Map();
+  }
 
-    mapObject = new Map()
-    mapTenObject = new Map()
-
-    constructor() { }
-
-    setThousand() {
-        const ezerElemMap = "Ezer elem hozzáadása a normal Maphez"
-        console.time(ezerElemMap);
-        for (let index = 0; index < 1000; index++) {
-            let value = "value" + index
-            this.mapObject = this.mapObject.set(index, value);
-        }
-        console.timeEnd(ezerElemMap);
+  setThousand() {
+    const ezerElemMap = "Ezer elem hozzáadása a normal Maphez";
+    console.time(ezerElemMap);
+    for (let index = 0; index < 1000; index++) {
+      let value = "value" + index;
+      this.mapObject = this.mapObject.set(index, value);
     }
+    console.timeEnd(ezerElemMap);
+  }
 
-    setTenThousand() {
-        const tizezerElemMap = "Tízezer elem hozzáadása a rendes Maphez"
-        console.time(tizezerElemMap);
-        for (let index = 0; index < 10000; index++) {
-            let value = "value" + index
-            this.mapTenObject = this.mapTenObject.set(index, value);
-        }
-        console.timeEnd(tizezerElemMap);
+  setTenThousand() {
+    const tizezerElemMap = "Tízezer elem hozzáadása a rendes Maphez";
+    console.time(tizezerElemMap);
+    for (let index = 0; index < 10000; index++) {
+      let value = "value" + index;
+      this.mapTenObject = this.mapTenObject.set(index, value);
     }
+    console.timeEnd(tizezerElemMap);
+  }
 
-    getOne(value) {
-        const egyElemMap = "Egy elem elérése tízezer elemből rendes Mapen"
-        console.time(egyElemMap);
-        this.mapTenObject.get(value)
-        console.timeEnd(egyElemMap);
-    }
+  getOne(value) {
+    const egyElemMap = "Egy elem elérése tízezer elemből rendes Mapen";
+    console.time(egyElemMap);
+    this.mapTenObject.get(value);
+    console.timeEnd(egyElemMap);
+  }
 
-    deleteOne(value){
-        const torlesMap = "Egy elem törlése tízezer elemből rendes Mapen"
-        console.time(torlesMap);
-        this.mapTenObject.delete(value)
-        console.timeEnd(torlesMap);
-    }
-
-
+  deleteOne(value) {
+    const torlesMap = "Egy elem törlése tízezer elemből rendes Mapen";
+    console.time(torlesMap);
+    this.mapTenObject.delete(value);
+    console.timeEnd(torlesMap);
+  }
 }
 
-module.exports = { MapNormalClass }
+module.exports = { MapNormalClass };
 
-
-const ezerElemImmutableMap = "Ezer elem hozzáadása az immutable Maphez"
+const ezerElemImmutableMap = "Ezer elem hozzáadása az immutable Maphez";
 console.time(ezerElemImmutableMap);
 let mapImmutable = ImmutableMap.of();
-for( let index = 0; index < 1000; index++){
-    let value = "value" + index
-    mapImmutable = mapImmutable.set(index, value);
+for (let index = 0; index < 1000; index++) {
+  let value = "value" + index;
+  mapImmutable = mapImmutable.set(index, value);
 }
 console.timeEnd(ezerElemImmutableMap);
 
-const mapNormal = new MapNormalClass()
-mapNormal.setThousand()
+const mapNormal = new MapNormalClass();
+mapNormal.setThousand();
 
-
-const tizezerElemImmutableMap = "Tízezer elem hozzáadása az immutable Maphez"
+const tizezerElemImmutableMap = "Tízezer elem hozzáadása az immutable Maphez";
 console.time(tizezerElemImmutableMap);
 let mapImmutableTizezer = ImmutableMap.of();
-for( let index = 0; index < 10000; index++){
-    let value = "value" + index
-    mapImmutableTizezer = mapImmutableTizezer.set(index, value);
+for (let index = 0; index < 10000; index++) {
+  let value = "value" + index;
+  mapImmutableTizezer = mapImmutableTizezer.set(index, value);
 }
 console.timeEnd(tizezerElemImmutableMap);
 
-mapNormal.setTenThousand()
+mapNormal.setTenThousand();
 
-const egyElemImmutableMap = "Egy elem elérése tízezer elemből immutable Mapen"
+const egyElemImmutableMap = "Egy elem elérése tízezer elemből immutable Mapen";
 console.time(egyElemImmutableMap);
 mapImmutableTizezer.get(7555);
 console.timeEnd(egyElemImmutableMap);
 
-mapNormal.getOne(7555)
+mapNormal.getOne(7555);
 
-const torlesImmutableMap = "Egy elem törlése tízezer elemből immutable Mapen"
+const torlesImmutableMap = "Egy elem törlése tízezer elemből immutable Mapen";
 console.time(torlesImmutableMap);
 mapImmutableTizezer.delete(7555);
 console.timeEnd(torlesImmutableMap);
 
-mapNormal.deleteOne(7555)
-
+mapNormal.deleteOne(7555);
 
 /*const { Map } = require("immutable");
 
