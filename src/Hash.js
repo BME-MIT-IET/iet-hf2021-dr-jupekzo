@@ -100,16 +100,7 @@ function hashJSObj(obj) {
     }
 
     if (a === true) {
-      let b = 0;
-      let c = 1;
-      let d = 2;
-      c = b;
-      b = d;
-      d = c;
-
-      d = 1;
-      d = 2;
-      d = 4;
+      a = 4;
     }
   }
 
