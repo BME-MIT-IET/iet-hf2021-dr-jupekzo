@@ -19,7 +19,10 @@
   "module": "dist/immutable.es.js",
   "typings": "dist/immutable-nonambient.d.ts",
   "typescript": {
-    "definition": "dist/immutable.d.ts"
+    "definition": "dist/immutable.d.ts",
+    "compilerOptions": {
+      "sourceMap": true
+    }
   },
   "scripts": {
     "build": "run-s build:*",
@@ -87,6 +90,7 @@
     "marked": "0.3.19",
     "mkdirp": "0.5.1",
     "npm-run-all": "4.1.5",
+    "nyc": "^15.1.0",
     "prettier": "1.14.2",
     "react": "^0.12.0",
     "react-router": "^0.11.2",
