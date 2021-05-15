@@ -1,11 +1,56 @@
-import { createRequire } from 'module'
-const require = createRequire(import.meta.url);
-const { Map } = require("immutable");
-const { MapNormalClass} = require('./MapNormalPerformance.js');
+const { Map: ImmutableMap } = require("immutable");
+
+
+class MapNormalClass {
+
+    mapObject = new Map()
+    mapTenObject = new Map()
+
+    constructor() { }
+
+    setThousand() {
+        const ezerElemMap = "Ezer elem hozzáadása a normal Maphez"
+        console.time(ezerElemMap);
+        for (let index = 0; index < 1000; index++) {
+            let value = "value" + index
+            this.mapObject = this.mapObject.set(index, value);
+        }
+        console.timeEnd(ezerElemMap);
+    }
+
+    setTenThousand() {
+        const tizezerElemMap = "Tízezer elem hozzáadása a rendes Maphez"
+        console.time(tizezerElemMap);
+        for (let index = 0; index < 10000; index++) {
+            let value = "value" + index
+            this.mapTenObject = this.mapTenObject.set(index, value);
+        }
+        console.timeEnd(tizezerElemMap);
+    }
+
+    getOne(value) {
+        const egyElemMap = "Egy elem elérése tízezer elemből rendes Mapen"
+        console.time(egyElemMap);
+        this.mapTenObject.get(value)
+        console.timeEnd(egyElemMap);
+    }
+
+    deleteOne(value){
+        const torlesMap = "Egy elem törlése tízezer elemből rendes Mapen"
+        console.time(torlesMap);
+        this.mapTenObject.delete(value)
+        console.timeEnd(torlesMap);
+    }
+
+
+}
+
+module.exports = { MapNormalClass }
+
 
 const ezerElemImmutableMap = "Ezer elem hozzáadása az immutable Maphez"
 console.time(ezerElemImmutableMap);
-let mapImmutable = Map.of();
+let mapImmutable = ImmutableMap.of();
 for( let index = 0; index < 1000; index++){
     let value = "value" + index
     mapImmutable = mapImmutable.set(index, value);
@@ -18,7 +63,7 @@ mapNormal.setThousand()
 
 const tizezerElemImmutableMap = "Tízezer elem hozzáadása az immutable Maphez"
 console.time(tizezerElemImmutableMap);
-let mapImmutableTizezer = Map.of();
+let mapImmutableTizezer = ImmutableMap.of();
 for( let index = 0; index < 10000; index++){
     let value = "value" + index
     mapImmutableTizezer = mapImmutableTizezer.set(index, value);
