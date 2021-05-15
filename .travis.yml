@@ -5,6 +5,6 @@ node_js: 8
 cache: yarn
 scripts:
   -npm run test:travis
-  - npm install codecov -g
+  -npm install codecov -g
 after_success:
-  - codecov --token=:27a9706f-522c-4d86-a35b-99ff1a0909fe
+  -codecov --token=:27a9706f-522c-4d86-a35b-99ff1a0909fe
