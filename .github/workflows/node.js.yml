@@ -32,3 +32,6 @@ jobs:
     - run: node performance_tests/ListPerformance
     - run: node performance_tests/MapPerformance
     - run: node performance_tests/SetPerformance
+    - run: npm install codecov -g
+    - run: jest --coverage
+    - run: codecov --token="9c7a2e27-2ba1-4a4b-8281-426b13615a73"
