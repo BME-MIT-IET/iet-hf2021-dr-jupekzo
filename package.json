@@ -19,7 +19,10 @@
   "module": "dist/immutable.es.js",
   "typings": "dist/immutable-nonambient.d.ts",
   "typescript": {
-    "definition": "dist/immutable.d.ts"
+    "definition": "dist/immutable.d.ts",
+    "compilerOptions": {
+      "sourceMap": true
+    }
   },
   "scripts": {
     "build": "run-s build:*",
@@ -36,6 +39,7 @@
     "format": "prettier --single-quote --trailing-comma=es5 --write \"{__tests__,src,pages/src,pages/lib,perf,resources}/**/*{\\.js,\\.ts}\"",
     "test": "run-s format build test:types:*",
     "test:travis": "npm run test",
+    "coverage": "nyc npm run test",
     "cucumber-test": "cucumber-js test",
     "test:types:ts": "tsc ./type-definitions/Immutable.d.ts --lib es2015 && dtslint type-definitions/ts-tests",
     "test:types:flow": "flow check type-definitions/tests --include-warnings",
@@ -55,7 +59,8 @@
     "testRegex": "/__tests__/.*\\.(ts|js)$",
     "unmockedModulePathPatterns": [
       "./node_modules/react"
-    ]
+    ],
+    "collectCoverage": true
   },
   "devDependencies": {
     "benchmark": "2.1.4",
@@ -63,6 +68,7 @@
     "browserify": "16.2.2",
     "colors": "1.2.5",
     "cucumber": "^7.0.0-rc.0",
+    "codecov": "3.7.0",
     "del": "3.0.0",
     "dtslint": "0.1.2",
     "eslint": "4.19.1",
@@ -87,6 +93,7 @@
     "marked": "0.3.19",
     "mkdirp": "0.5.1",
     "npm-run-all": "4.1.5",
+    "nyc": "^15.1.0",
     "prettier": "1.14.2",
     "react": "^0.12.0",
     "react-router": "^0.11.2",

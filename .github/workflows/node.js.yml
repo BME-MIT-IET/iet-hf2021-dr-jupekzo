@@ -31,4 +31,4 @@ jobs:
     - run: npm run cucumber-test
     - run: node performance_tests/ListPerformance
     - run: node performance_tests/MapPerformance
-    - run: node performance_tests/MapNormalPerformance
+    - run: node performance_tests/SetPerformance
